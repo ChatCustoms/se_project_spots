@@ -1,10 +1,17 @@
 .page {
-    min-height: 100vh;
-    background: #FCF5E5;
-    font-family: Poppins, Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: #fcf5e5;
+  font-family: Poppins, Helvetica, sans-serif;
 }
 
 .page__section {
-    max-width: 1280px;
-    margin: 0 auto;
+  max-width: 1280px;
+  margin: auto;
+}
+
+@media screen and (max-with: 660) {
+  .page__section {
+    margin: 0;
+    padding: 0;
+  }
 }

@@ -1,22 +1,25 @@
 .footer {
-    max-width: 104px;
-    max-height: 16px;
-    margin: auto;
-    display: flex;
-    text-wrap: nowrap;
+  max-width: 104px;
+  max-height: 16px;
+  margin: auto;
+  display: flex;
+  text-wrap: nowrap;
+  padding: 60px 0;
 }
 
-.footer_title {
-    font-family: Poppins;
-font-size: 16px;
-font-weight: 400;
-line-height: 16px;
-background: transparent;
-margin: auto;
+.footer__text {
+  font-family: Poppins, Helvetica, sans-serif;  
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  background: transparent;
+  margin: auto;
+  color: #212121;
+  opacity: 70%;
 }
 
 @media screen and (max-width: 660px) {
-    .footer {
-        padding-bottom: 60px;
-    }
+  .footer {
+    padding-bottom: 60px;
+  }
 }
