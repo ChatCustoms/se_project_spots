@@ -1,8 +1,7 @@
 .footer {
-  max-width: 104px;
-  max-height: 16px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
+  justify-content: center;
   text-wrap: nowrap;
   padding: 60px 0;
 }
@@ -13,7 +12,7 @@
   font-weight: 400;
   line-height: 16px;
   background: transparent;
-  margin: auto;
+  margin: 0;
   color: #212121;
   opacity: 70%;
 }

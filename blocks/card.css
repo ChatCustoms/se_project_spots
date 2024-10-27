@@ -8,6 +8,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
+  margin-bottom: 12px;
 }
 
 .card__content {
@@ -40,8 +41,8 @@
 }
 
 .card__like-button:hover {
-  opacity: 40%;
   cursor: pointer;
+  opacity: 1;
 }
 
 @media screen and (max-width: 600px) {
@@ -52,10 +53,17 @@
   .card__like-button {
     width: 20px;
     height: 18px;
+    background-size: contain;
   }
 
   .card__image {
     height: 288px;
     width: 288px;
+  }
+
+  .card__title {
+    max-width: 235px;
+    font-size: 16px;
+    line-height: 16px;
   }
 }
