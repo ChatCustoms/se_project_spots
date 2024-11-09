@@ -71,9 +71,10 @@
     font-weight: 500;
     line-height: 20px;
     text-align: left;
-    color: rgba(33, 33, 33, 0.4);
+    color: #212121;
+    /* color: rgba(33, 33, 33, 0.4); */
     border-radius: 8px;
-    opacity: 40%;
+    /* opacity: 40%; */
 }
 
 .modal__submit-button {
