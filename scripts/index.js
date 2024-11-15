@@ -49,10 +49,15 @@ function getCardElement(data) {
 
     const cardNameEl = cardElement.querySelector(".card__title");
     const cardImage = cardElement.querySelector(".card__image");
+    const cardLikeButton = cardElement.querySelector(".card__like-button");
 
     cardNameEl.textContent = data.name;
     cardImage.src = data.link;
     cardImage.alt = data.name;
+
+    cardLikeButton.addEventListener("click", () => {
+        cardLikeButton.classList.toggle("card__like-button_liked");
+    })
 
     return cardElement;
 };
