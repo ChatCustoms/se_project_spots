@@ -31,7 +31,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 353px; 
+  max-width: 353px;
   margin: 0;
 }
 
@@ -44,15 +44,15 @@
   border: none;
   opacity: 0.4;
   cursor: pointer;
-} 
+}
 
 .card__like-button:hover {
   opacity: 1;
 }
 
 .card__like-button_liked {
-background-image: url(../images/Liked.svg);
-opacity: 1;
+  background-image: url(../images/Liked.svg);
+  opacity: 1;
 }
 
 .card__like-button_liked:hover {
