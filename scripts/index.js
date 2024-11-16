@@ -77,7 +77,7 @@ function getCardElement(data) {
     openModal(previewModal);
     previewModalImageEl.src = data.link;
     previewModalCaptionEl.textContent = data.name;
-    previewModal.alt = data.name;
+    previewModalImageEl.alt = data.name;
   });
 
   cardCloseButton.addEventListener("click", () => {
@@ -111,6 +111,7 @@ function handleAddCardSubmit(evt) {
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+  evt.target.reset();
   closeModal(editProfileModal);
 }
 
