@@ -68,8 +68,9 @@
   width: 40px;
   height: 40px;
   top: 0;
-  right: -52.5px;
+  right: -550px;
   opacity: 1;
+  position: relative;
 }
 
 .modal__close-icon {
@@ -180,16 +181,12 @@
     font-weight: 500;
   }
 
-  .modal__content_type_preview {
-    position: relative;
-  }
-
   .modal__close-button_type_preview {
     background-image: url(../images/modal_close.png);
     width: 40px;
     height: 40px;
-    top: -42px;
-    right: 0;
+    top: 0;
+    right: -245px;
     opacity: 1;
   }
 
