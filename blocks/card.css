@@ -55,6 +55,27 @@ opacity: 1;
   background-image: url(../images/Liked-hover.svg);
 }
 
+.card-image-container {
+  position: relative;
+}
+
+.card__close-button {
+  background-image: url(../images/delete-icon_Default.png);
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.card__close-button:hover {
+  background-image: url(../images/delete-icon_hover.png);
+}
+
 @media screen and (max-width: 600px) {
   .card {
     width: 288px;
