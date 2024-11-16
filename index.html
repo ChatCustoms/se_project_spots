@@ -66,7 +66,7 @@
         <p class="footer__text">2024 &copy; Spots</p>
       </footer>
       <div id="edit-profile-modal" class="modal">
-        <div class="modal__container">
+        <div class="modal__content">
           <button type="button" class="modal__close-button"><img src="./images/Close_icon.svg" alt="Close icon" class="modal__close-icon"></button>
           <h2 class="modal__title">Edit profile</h2>
           <form name="edit-profile" class="modal__form">
@@ -83,7 +83,7 @@
         </div>
       </div>
       <div id="add-card-modal" class="modal">
-        <div class="modal__container">
+        <div class="modal__content">
           <button type="button" class="modal__close-button"><img src="./images/Close_icon.svg" alt="Close icon" class="modal__close-icon"></button>
           <h2 class="modal__title">New post</h2>
           <form name="edit-profile" class="modal__form">
@@ -98,6 +98,14 @@
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
         </div>
+      </div>
+    </div>
+
+    <div class="modal" id="preview-modal">
+      <div class="modal__content modal__content_type_preview">
+        <button class="modal__close-button modal__close-button_type_preview" type="button" ></button>
+        <img class="modal__image" src="" alt="" />
+        <p class="modal__caption"></p>
       </div>
     </div>
     <script src="./scripts/index.js" defer></script> 
