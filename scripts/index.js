@@ -98,6 +98,8 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.addEventListener("keydown", handleEscape);
+  document.removeEventListener("keydown", handleEscape);
 }
 
 function handelEditFormSubmit(evt) {
@@ -141,3 +143,23 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
 });
+
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    closeModal(editProfileModal);
+    closeModal(previewModal);
+  }
+}
+
+function handleOverlayClick(evt) {
+  const isClickOutsideModalContainer = !evt.target.closest(".modal__content");
+  const isClickOutsideImageContainer = !evt.target.closest(
+    ".modal__content_type_preview"
+  );
+
+  if (isClickOutsideImageContainer && isClickOutsideModalContainer) {
+    closeModal(editProfileModal);
+    closeModal(previewModal);
+  }
+  console.log("Click detected");
+}
