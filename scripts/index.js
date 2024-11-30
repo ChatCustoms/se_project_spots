@@ -92,16 +92,6 @@ previewModalClose.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.addEventListener("keydown", handleEscape);
-  document.removeEventListener("keydown", handleEscape);
-}
-
 function handelEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
@@ -148,18 +138,26 @@ function handleEscape(evt) {
   if (evt.key === "Escape") {
     closeModal(editProfileModal);
     closeModal(previewModal);
+    closeModal(cardModal);
   }
 }
 
 function handleOverlayClick(evt) {
-  const isClickOutsideModalContainer = !evt.target.closest(".modal__content");
-  const isClickOutsideImageContainer = !evt.target.closest(
-    ".modal__content_type_preview"
-  );
-
-  if (isClickOutsideImageContainer && isClickOutsideModalContainer) {
+  const isClickOutside = !evt.target.closest(".modal__content");
+  if (isClickOutside) {
     closeModal(editProfileModal);
     closeModal(previewModal);
+    closeModal(cardModal);
   }
-  console.log("Click detected");
+}
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  modal.addEventListener("keydown", handleEscape);
+  modal.addEventListener("click", handleOverlayClick);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  modal.removeEventListener("keydown", handleEscape);
+  modal.removeEventListener("click", handleOverlayClick);
 }
