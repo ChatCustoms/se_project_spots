@@ -82,7 +82,8 @@ function getCardElement(data) {
   });
 
   cardCloseButton.addEventListener("click", () => {
-    cardCloseButton.closest(".card").remove();
+    // cardCloseButton.closest(".card").remove();
+    cardElement.remove();
   });
 
   return cardElement;
@@ -141,7 +142,6 @@ function handleEscape(evt) {
     if (openModal) closeModal(openModal);
   }
 }
-
 
 function handleOverlayClick(evt) {
   if (!evt.target.closest(".modal__content")) {
