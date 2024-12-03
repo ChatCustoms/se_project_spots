@@ -59,11 +59,6 @@ const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const buttonElement = formEl.querySelector(config.submitButtonSelector);
 
-  if (!buttonElement) {
-    console.warn("No submit button found for form:", formEl);
-    return;
-  }
-
   toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
