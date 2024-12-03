@@ -1,6 +1,5 @@
-// Settings object
 const settings = {
-  formSelector: ".modal__content",
+  formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
   inactiveButtonClass: "modal__submit-button_disabled",
@@ -8,7 +7,6 @@ const settings = {
   errorClass: "modal__error",
 };
 
-// Validation logic (showInputError, hideInputError, etc.)
 const showInputError = (formEl, inputEl, errorMsg, config) => {
   const errorMsgID = inputEl.id + "-error";
   const errorMsgEl = formEl.querySelector("#" + errorMsgID);
@@ -76,7 +74,6 @@ const enableValidation = (config) => {
   });
 };
 
-// Wait for DOM to load and initialize validation
 document.addEventListener("DOMContentLoaded", () => {
   enableValidation(settings);
 });
