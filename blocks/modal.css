@@ -36,6 +36,7 @@
 .modal__content_type_preview {
   padding: 0;
   position: relative;
+  background-color: transparent;
 }
 
 .modal__caption {
