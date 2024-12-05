@@ -169,7 +169,7 @@
 
 @media screen and (max-width: 627px) {
   .modal {
-    padding: 0 10px;
+    padding: 0 16px;
   }
 
   .modal__container {
@@ -212,9 +212,9 @@
     line-height: 19.2px;
   }
 
-  .modal__content {
+  /* .modal__content {
     padding: 12px;
-  }
+  } */
 
   .modal__close-button_type_preview {
     background-image: url(../images/modal_close.png);
