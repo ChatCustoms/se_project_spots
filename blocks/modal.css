@@ -212,9 +212,13 @@
     line-height: 19.2px;
   }
 
-  /* .modal__content {
+  .modal__content {
     padding: 12px;
-  } */
+  }
+
+  .modal__content_type_preview {
+    padding: 0;
+  }
 
   .modal__close-button_type_preview {
     background-image: url(../images/modal_close.png);
