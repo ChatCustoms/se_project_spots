@@ -49,6 +49,13 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|webp|gif|woff(2)?|eot|ttf|otf)$/,
         type: 'asset/resource',
       },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext][query]'
+        },
+      },
     ],
   },
   plugins: [
