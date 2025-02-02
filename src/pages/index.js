@@ -62,7 +62,6 @@ const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 const deleteModal = document.querySelector("#delete-modal");
 const deleteform = deleteModal.querySelector(".modal__form");
 
-
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
@@ -86,7 +85,7 @@ api
       const cardElement = getCardElement(item);
       cardsList.prepend(cardElement);
     });
-  
+
     profileAvatar.src = user.avatar || avatarSRC;
     profileName.textContent = user.name;
     profileDescription.textContent = user.about;
@@ -97,7 +96,7 @@ api
     console.log(err);
   });
 
-function handleLike (evt, id) {
+function handleLike(evt, id) {
   const isLiked = evt.target.classList.contains("card__like-button_liked");
   api
     .changeLikeStatus(id, !isLiked)
@@ -142,7 +141,7 @@ previewModalClose.addEventListener("click", () => {
   console.log(handleEscape);
 });
 
-function handelEditFormSubmit(evt) {
+function handleEditFormSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true, "Saving...", "Save");
@@ -159,8 +158,7 @@ function handelEditFormSubmit(evt) {
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false, "Saving...", "Save");
-    }
-    );
+    });
 }
 
 function handleAddCardSubmit(evt) {
@@ -223,7 +221,7 @@ cardModalButton.addEventListener("click", () => {
 cardModalCloseButton.addEventListener("click", () => {
   closeModal(cardModal);
 });
-editFormElement.addEventListener("submit", handelEditFormSubmit);
+editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 
