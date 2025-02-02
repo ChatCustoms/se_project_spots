@@ -39,6 +39,11 @@
   background-color: transparent;
 }
 
+#avatar-modal .modal__content_type_preview {
+  background-color: #fff;
+  padding: 32px;
+}
+
 .modal__caption {
   font-family: Poppins, Helvetica, sans-serif;
   font-weight: 500;
