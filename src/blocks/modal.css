@@ -142,6 +142,13 @@
   opacity: 70%;
 }
 
+.modal__form_dlt {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 .modal__submit-button {
   width: 156px;
   padding: 18px 0;
@@ -153,6 +160,34 @@
   background-color: rgba(33, 33, 33, 1);
   color: rgba(252, 245, 229, 1);
   opacity: 100%;
+}
+
+.modal__button {
+  width: 156px;
+  padding: 18px 0;
+  font-family: Poppins, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 8px;
+  color: #fff;
+  opacity: 100%;
+  background-color: rgba(33, 33, 33, 1);
+  border: none;
+}
+
+.modal__button_dlt {
+  width: 156px;
+  padding: 18px 0;
+  font-family: Poppins, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 8px;
+  color: rgba(33, 33, 33, 1);
+  opacity: 100%;
+  background-color: #ff0000;
+  border: none;
 }
 
 .modal__submit-button_disabled {

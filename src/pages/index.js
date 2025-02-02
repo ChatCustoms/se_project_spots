@@ -10,6 +10,7 @@ import avatarSRC from "../images/spots-avatar-and-card-images/avatar.jpg";
 import profileImageSrc from "../images/pencil.svg";
 import plusImageSRC from "../images/plus.svg";
 import API from "../utils/Api.js";
+import { setButtonText } from "../utils/helpers.js";
 
 const logoImage = document.getElementById("image-logo");
 logoImage.src = logoSRC;
@@ -143,6 +144,8 @@ previewModalClose.addEventListener("click", () => {
 
 function handelEditFormSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true, "Saving...", "Save");
   api
     .editUserInfo({
       name: editModalNameInput.value,
@@ -153,7 +156,11 @@ function handelEditFormSubmit(evt) {
       profileDescription.textContent = editModalDescriptionInput.value;
       closeModal(editProfileModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false, "Saving...", "Save");
+    }
+    );
 }
 
 function handleAddCardSubmit(evt) {
