@@ -11,31 +11,6 @@ import profileImageSrc from "../images/pencil.svg";
 import plusImageSRC from "../images/plus.svg";
 import API from "../utils/Api.js";
 
-const api = new API({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "eaa07941-85e8-4191-b5c0-cf5839401a76",
-    "Content-Type": "application/json",
-  },
-});
-
-api
-  .getAppInfo()
-  .then(([cards]) => {
-    cards.forEach((item) => {
-      const cardElement = getCardElement(item);
-      cardsList.prepend(cardElement);
-    });
-  })
-  .then((users) => {
-    profileAvatar.src = users.avatar;
-    cardNameInput.value = users.name;
-    cardLinkInput.value = users.about;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 const logoImage = document.getElementById("image-logo");
 logoImage.src = logoSRC;
 
@@ -95,6 +70,42 @@ const previewModalClose = previewModal.querySelector(".modal__close-button");
 let selectedCard;
 let selectedCardId;
 
+const api = new API({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "eaa07941-85e8-4191-b5c0-cf5839401a76",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getAppInfo()
+  .then(([cards, user]) => {
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.prepend(cardElement);
+    });
+  
+    profileAvatar.src = user.avatar || avatarSRC;
+    profileName.textContent = user.name;
+    profileDescription.textContent = user.about;
+    cardNameInput.value = user.name;
+    cardLinkInput.value = user.about;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+function handleLike (evt, id) {
+  const isLiked = evt.target.classList.contains("card__like-button_liked");
+  api
+    .changeLikeStatus(id, !isLiked)
+    .then((data) => {
+      evt.target.classList.toggle("card__like-button_liked");
+    })
+    .catch(console.error);
+}
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -109,9 +120,7 @@ function getCardElement(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
-  cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__like-button_liked");
-  });
+  cardLikeButton.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   cardImage.addEventListener("click", () => {
     openModal(previewModal);
