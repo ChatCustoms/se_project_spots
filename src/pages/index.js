@@ -86,7 +86,7 @@ api
       cardsList.prepend(cardElement);
     });
 
-    profileAvatar.src = user.avatar || avatarSRC;
+    profileAvatar.src = user.avatar;
     profileName.textContent = user.name;
     profileDescription.textContent = user.about;
     cardNameInput.value = user.name;
@@ -96,7 +96,8 @@ api
     console.log(err);
   });
 
-function handleLike(evt, id) {
+
+  function handleLike(evt, id) {
   const isLiked = evt.target.classList.contains("card__like-button_liked");
   api
     .changeLikeStatus(id, !isLiked)
