@@ -60,7 +60,7 @@ const avatarModalButton = document.querySelector(".profile__avatar-btn");
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
 const deleteModal = document.querySelector("#delete-modal");
-const deleteform = deleteModal.querySelector(".modal__form");
+const deleteForm = deleteModal.querySelector(".modal__form");
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
@@ -96,8 +96,7 @@ api
     console.log(err);
   });
 
-
-  function handleLike(evt, id) {
+function handleLike(evt, id) {
   const isLiked = evt.target.classList.contains("card__like-button_liked");
   api
     .changeLikeStatus(id, !isLiked)
@@ -165,11 +164,16 @@ function handleEditFormSubmit(evt) {
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
-  disableButton(cardSubmitButton, settings);
-  evt.target.reset();
-  closeModal(cardModal);
+  api
+    .addCard(inputValues)
+    .then((data) => {
+      const cardElement = getCardElement(data);
+      cardsList.prepend(cardElement);
+      disableButton(cardSubmitButton, settings);
+      evt.target.reset();
+      closeModal(cardModal);
+    })
+    .catch(console.error);
 }
 
 function handleAvatarSubmit(evt) {
@@ -199,7 +203,6 @@ function handleDeleteCard(cardElement, cardID) {
   selectedCardId = cardID;
   openModal(deleteModal);
 }
-
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
@@ -233,7 +236,7 @@ avatarModalCloseButton.addEventListener("click", () => {
   closeModal(avatarModal);
 });
 
-deleteform.addEventListener("submit", handleDeleteSubmit);
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 function handleEscape(evt) {
   if (evt.key === "Escape") {
