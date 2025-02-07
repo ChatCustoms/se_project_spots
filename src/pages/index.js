@@ -60,7 +60,7 @@ const avatarModalButton = document.querySelector(".profile__avatar-btn");
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
 const deleteModal = document.querySelector("#delete-modal");
-const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteForm = deleteModal.querySelector(".modal__form_dlt");
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
@@ -138,7 +138,6 @@ function getCardElement(data) {
 
 previewModalClose.addEventListener("click", () => {
   closeModal(previewModal);
-  console.log(handleEscape);
 });
 
 function handleEditFormSubmit(evt) {

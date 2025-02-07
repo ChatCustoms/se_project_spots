@@ -147,6 +147,7 @@
   align-content: center;
   justify-content: center;
   gap: 20px;
+  cursor: pointer;
 }
 
 .modal__submit-button {
@@ -234,6 +235,18 @@
   .modal__submit-button {
     width: 100%;
   }
+
+  .modal__close-icon{
+    margin-top: 10px;
+  }
+
+  .modal__title {
+    margin: 0 0 34px;
+  }
+
+  #avatar-modal .modal__content_type_preview {
+    padding: 12px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -275,5 +288,21 @@
     cursor: pointer;
     transition: cursor 2s;
     opacity: 0.4;
+  }
+
+  .modal__form_dlt {
+    display: block;
+  }
+
+  .modal__close-icon{
+    margin-top: 10px;
+  }
+
+  .modal__title {
+    margin: 0 0 34px;
+  }
+
+  #avatar-modal .modal__content_type_preview {
+    padding: 12px;
   }
 }
