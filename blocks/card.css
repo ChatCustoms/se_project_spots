@@ -1,0 +1,105 @@
+.card {
+  max-width: 413px;
+}
+
+.card__image {
+  height: 413px;
+  width: 413px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.card__image:hover {
+  cursor: pointer;
+}
+
+.card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__title {
+  font-family: Poppins, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #212121;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 353px;
+  margin: 0;
+}
+
+.card__like-button {
+  background: transparent url(../images/Like-Icon.svg) center no-repeat;
+  width: 23px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.card__like-button:hover {
+  opacity: 1;
+}
+
+.card__like-button_liked {
+  background-image: url(../images/Liked.png);
+  border: none;
+  opacity: 1;
+}
+
+.card__like-button_liked:hover {
+  background-image: url(../images/Liked-hover.svg);
+}
+
+.card-image-container {
+  position: relative;
+}
+
+.card__close-button {
+  background-image: url(../images/delete-icon_Default.png);
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.card__close-button:hover {
+  background-image: url(../images/delete-icon_hover.png);
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 288px;
+  }
+
+  .card__like-button {
+    width: 20px;
+    height: 18px;
+    background-size: contain;
+  }
+
+  .card__image {
+    height: 288px;
+    width: 288px;
+  }
+
+  .card__title {
+    max-width: 235px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
