@@ -61,6 +61,8 @@ const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form_dlt");
+const deleteModalCloseButton = deleteModal.querySelector(".modal__close-icon");
+const deleteModalCancelButton = deleteModal.querySelector(".modal__cancel-button");
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
@@ -99,7 +101,7 @@ api
 function handleLike(evt, id) {
   const isLiked = evt.target.classList.contains("card__like-button_liked");
   api
-    .changeLikeStatus(id, !isLiked)
+    .changeLikeStatus(id, isLiked)
     .then((data) => {
       evt.target.classList.toggle("card__like-button_liked");
     })
@@ -121,6 +123,10 @@ function getCardElement(data) {
   cardImage.alt = data.name;
 
   cardLikeButton.addEventListener("click", (evt) => handleLike(evt, data._id));
+  
+  if (data.isLiked) {
+    cardLikeButton.classList.add("card__like-button_liked");
+  };
 
   cardImage.addEventListener("click", () => {
     openModal(previewModal);
@@ -202,6 +208,15 @@ function handleDeleteCard(cardElement, cardID) {
   selectedCardId = cardID;
   openModal(deleteModal);
 }
+
+deleteModalCloseButton.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+deleteModalCancelButton.addEventListener("click", () => { 
+  closeModal(deleteModal);
+});
+
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
@@ -219,6 +234,12 @@ editProfileCloseButton.addEventListener("click", () => {
   closeModal(editProfileModal);
 });
 cardModalButton.addEventListener("click", () => {
+  cardNameInput.value = "";
+  cardLinkInput.value = "";
+  resetValidation(cardForm, [cardNameInput, cardLinkInput], { 
+    inputErrorClass: "modal__input_type_error", 
+    errorClass: "modal__error" 
+  });
   openModal(cardModal);
 });
 cardModalCloseButton.addEventListener("click", () => {
@@ -229,6 +250,11 @@ cardForm.addEventListener("submit", handleAddCardSubmit);
 avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 avatarModalButton.addEventListener("click", () => {
+  avatarLinkInput.value = "";
+  resetValidation(avatarForm, [avatarLinkInput], {
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error",
+  });
   openModal(avatarModal);
 });
 avatarModalCloseButton.addEventListener("click", () => {
