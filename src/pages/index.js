@@ -11,6 +11,7 @@ import profileImageSrc from "../images/pencil.svg";
 import plusImageSRC from "../images/plus.svg";
 import API from "../utils/Api.js";
 import { setButtonText } from "../utils/helpers.js";
+// import { set } from "core-js/core/dict";
 
 const logoImage = document.getElementById("image-logo");
 logoImage.src = logoSRC;
@@ -168,6 +169,8 @@ function handleEditFormSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true, "Saving...", "Save");
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   api
     .addCard(inputValues)
@@ -183,17 +186,31 @@ function handleAddCardSubmit(evt) {
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true, "Saving...", "Save");
+  avatarSubmitButton.disabled = true;
   api
     .editUserAvatar(avatarLinkInput.value)
     .then((data) => {
       profileAvatar.src = data.avatar;
       closeModal(avatarModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setTimeout(() => {
+      avatarSubmitButton.disabled = false;
+      }, 1000);
+    });
 }
+
+avatarLinkInput.addEventListener("input", () => {
+    disableButton(avatarSubmitButton, settings);
+});
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true, "Deleting...", "Delete");
   api
     .deleteCard(selectedCardId)
     .then(() => {
