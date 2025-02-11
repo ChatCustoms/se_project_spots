@@ -183,14 +183,24 @@ function handleAddCardSubmit(evt) {
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
+  avatarSubmitButton.disabled = true;
   api
     .editUserAvatar(avatarLinkInput.value)
     .then((data) => {
       profileAvatar.src = data.avatar;
       closeModal(avatarModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setTimeout(() => {
+      avatarSubmitButton.disabled = false;
+      }, 1000);
+    });
 }
+
+avatarLinkInput.addEventListener("input", () => {
+    disableButton(avatarSubmitButton, settings);
+});
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
