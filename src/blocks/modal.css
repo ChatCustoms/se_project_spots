@@ -201,7 +201,7 @@
   border-radius: 8px;
   color: rgba(33, 33, 33, 1);
   opacity: 100%;
-  background-color: #ff0000;
+  background-color: #ff5656;
   border: none;
 }
 
@@ -225,6 +225,12 @@
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 16px;
+  }
+
+  .modal__content {
+    width: 90%;
+    max-width: 320px;
+    padding: 24px;
   }
 
   .modal__container {
@@ -260,6 +266,22 @@
 
   #avatar-modal .modal__content_type_preview {
     padding: 12px;
+  }
+
+  .modal__button_dlt {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 8px;
+  }
+
+  .modal__cancel-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .modal__form_dlt {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
