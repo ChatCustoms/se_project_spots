@@ -32,7 +32,7 @@ const profileDescription = document.querySelector(".profile__description");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editFormElement = editProfileModal.querySelector(".modal__form");
 const editProfileCloseButton = editProfileModal.querySelector(
-  ".modal__close_button"
+  ".modal__close-button"
 );
 const editModalNameInput = editProfileModal.querySelector(
   "#profile-name-input"
@@ -46,7 +46,7 @@ const cardsList = document.querySelector(".cards__list");
 const cardModal = document.querySelector("#add-card-modal");
 const cardForm = cardModal.querySelector(".modal__form");
 const cardSubmitButton = cardModal.querySelector(".modal__submit-button");
-const cardModalCloseButton = cardModal.querySelector(".modal__close_button");
+const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
@@ -54,7 +54,7 @@ const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = avatarModal.querySelector(".modal__form");
 const avatarSubmitButton = avatarModal.querySelector(".modal__submit-button");
 const avatarModalCloseButton = avatarModal.querySelector(
-  ".modal__close_button"
+  ".modal__close-button"
 );
 const avatarModalButton = document.querySelector(".profile__avatar-btn");
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
@@ -69,7 +69,7 @@ const deleteModalCancelButton = deleteModal.querySelector(
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
-const previewModalClose = previewModal.querySelector(".modal__close_button");
+const previewModalClose = previewModal.querySelector(".modal__close-button");
 
 let selectedCard;
 let selectedCardId;
@@ -181,6 +181,8 @@ function handleAddCardSubmit(evt) {
       const cardElement = getCardElement(data);
       cardsList.prepend(cardElement);
       disableButton(cardSubmitButton, settings);
+      cardNameInput.value = "";
+      cardLinkInput.value = "";
       evt.target.reset();
       closeModal(cardModal);
     })
@@ -247,10 +249,7 @@ profileEditButton.addEventListener("click", () => {
   resetValidation(
     editFormElement,
     [editModalNameInput, editModalDescriptionInput],
-    {
-      inputErrorClass: "modal__input_type_error",
-      errorClass: "modal__error",
-    }
+    settings
   );
   openModal(editProfileModal);
 });
@@ -258,8 +257,6 @@ editProfileCloseButton.addEventListener("click", () => {
   closeModal(editProfileModal);
 });
 cardModalButton.addEventListener("click", () => {
-  cardNameInput.value = "";
-  cardLinkInput.value = "";
   openModal(cardModal);
 });
 cardModalCloseButton.addEventListener("click", () => {
