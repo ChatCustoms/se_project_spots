@@ -60,12 +60,12 @@
 
 .modal__close-button {
   position: absolute;
-  top: 32px;
-  right: 50px;
+  top: -10px;
+  right: -40px;
   width: 40px;
   height: 40px;
   padding: 0;
-  background-color: #fff;
+  background-color: transparent;
   border: none;
 }
 
@@ -88,7 +88,8 @@
 
 .modal__close-icon {
   opacity: 40%;
-  color: #212121;
+  color: rgba(255, 255, 255, 1);
+  border: 2px;
 }
 
 .modal__close-icon:hover {
@@ -177,7 +178,7 @@
   border: none;
 }
 
-.modal__cancel-button {
+.modal__cancel_button {
   width: 156px;
   padding: 18px 0;
   font-family: Poppins, Helvetica, sans-serif;

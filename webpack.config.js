@@ -64,6 +64,8 @@ module.exports = {
       favicon: "./src/images/favicon.ico",
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "index.css",
+    }),
   ],
 };

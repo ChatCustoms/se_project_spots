@@ -4,14 +4,13 @@ import {
   disableButton,
   resetValidation,
 } from "../scripts/validation.js";
-import "./index.css";
+import "../pages/index.css";
 import logoSRC from "../images/logo.svg";
 import avatarSRC from "../images/spots-avatar-and-card-images/avatar.jpg";
 import profileImageSrc from "../images/pencil.svg";
 import plusImageSRC from "../images/plus.svg";
 import API from "../utils/Api.js";
 import { setButtonText } from "../utils/helpers.js";
-// import { set } from "core-js/core/dict";
 
 const logoImage = document.getElementById("image-logo");
 logoImage.src = logoSRC;
@@ -33,7 +32,7 @@ const profileDescription = document.querySelector(".profile__description");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editFormElement = editProfileModal.querySelector(".modal__form");
 const editProfileCloseButton = editProfileModal.querySelector(
-  ".modal__close-button"
+  ".modal__close_button"
 );
 const editModalNameInput = editProfileModal.querySelector(
   "#profile-name-input"
@@ -47,7 +46,7 @@ const cardsList = document.querySelector(".cards__list");
 const cardModal = document.querySelector("#add-card-modal");
 const cardForm = cardModal.querySelector(".modal__form");
 const cardSubmitButton = cardModal.querySelector(".modal__submit-button");
-const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
+const cardModalCloseButton = cardModal.querySelector(".modal__close_button");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
@@ -55,7 +54,7 @@ const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = avatarModal.querySelector(".modal__form");
 const avatarSubmitButton = avatarModal.querySelector(".modal__submit-button");
 const avatarModalCloseButton = avatarModal.querySelector(
-  ".modal__close-button"
+  ".modal__close_button"
 );
 const avatarModalButton = document.querySelector(".profile__avatar-btn");
 const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
@@ -63,12 +62,14 @@ const avatarLinkInput = avatarModal.querySelector("#profile-avatar-input");
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form-dlt");
 const deleteModalCloseButton = deleteModal.querySelector(".modal__close-icon");
-const deleteModalCancelButton = deleteModal.querySelector(".modal__cancel-button");
+const deleteModalCancelButton = deleteModal.querySelector(
+  ".modal__cancel-button"
+);
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
-const previewModalClose = previewModal.querySelector(".modal__close-button");
+const previewModalClose = previewModal.querySelector(".modal__close_button");
 
 let selectedCard;
 let selectedCardId;
@@ -103,7 +104,7 @@ function handleLike(evt, id) {
   const isLiked = evt.target.classList.contains("card__like-button_liked");
   api
     .changeLikeStatus(id, isLiked)
-    .then((data) => {
+    .then(() => {
       evt.target.classList.toggle("card__like-button_liked");
     })
     .catch(console.error);
@@ -124,10 +125,10 @@ function getCardElement(data) {
   cardImage.alt = data.name;
 
   cardLikeButton.addEventListener("click", (evt) => handleLike(evt, data._id));
-  
+
   if (data.isLiked) {
     cardLikeButton.classList.add("card__like-button_liked");
-  };
+  }
 
   cardImage.addEventListener("click", () => {
     openModal(previewModal);
@@ -143,9 +144,11 @@ function getCardElement(data) {
   return cardElement;
 }
 
-previewModalClose.addEventListener("click", () => {
-  closeModal(previewModal);
-});
+if (previewModalClose) {
+  previewModalClose.addEventListener("click", () => {
+    closeModal(previewModal);
+  });
+}
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
@@ -203,7 +206,7 @@ function handleAvatarSubmit(evt) {
 }
 
 avatarLinkInput.addEventListener("input", () => {
-    disableButton(avatarSubmitButton, settings);
+  disableButton(avatarSubmitButton, settings);
 });
 
 function handleDeleteSubmit(evt) {
@@ -219,7 +222,7 @@ function handleDeleteSubmit(evt) {
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false, "Delete", "Delete");
-    })
+    });
 }
 
 function handleDeleteCard(cardElement, cardID) {
@@ -228,11 +231,13 @@ function handleDeleteCard(cardElement, cardID) {
   openModal(deleteModal);
 }
 
-deleteModalCloseButton.addEventListener("click", () => {
-  closeModal(deleteModal);
-});
+if (deleteModalCloseButton) {
+  deleteModalCloseButton.addEventListener("click", () => {
+    closeModal(deleteModal);
+  });
+}
 
-deleteModalCancelButton.addEventListener("click", () => { 
+deleteModalCancelButton.addEventListener("click", () => {
   closeModal(deleteModal);
 });
 
@@ -272,6 +277,7 @@ avatarModalButton.addEventListener("click", () => {
   });
   openModal(avatarModal);
 });
+
 avatarModalCloseButton.addEventListener("click", () => {
   closeModal(avatarModal);
 });
