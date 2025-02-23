@@ -40,6 +40,9 @@ const editModalNameInput = editProfileModal.querySelector(
 const editModalDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
+const editProfileSubmitButton = editProfileModal.querySelector(
+  ".modal__submit-button"
+);
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
@@ -93,8 +96,8 @@ api
     profileAvatar.src = user.avatar;
     profileName.textContent = user.name;
     profileDescription.textContent = user.about;
-    cardNameInput.value = user.name;
-    cardLinkInput.value = user.about;
+    cardNameInput.value = "";
+    cardLinkInput.value = "";
   })
   .catch((err) => {
     console.log(err);
@@ -162,6 +165,7 @@ function handleEditFormSubmit(evt) {
     .then((data) => {
       profileName.textContent = editModalNameInput.value;
       profileDescription.textContent = editModalDescriptionInput.value;
+      disableButton(editProfileSubmitButton, settings);
       closeModal(editProfileModal);
     })
     .catch(console.error)
@@ -186,19 +190,21 @@ function handleAddCardSubmit(evt) {
       evt.target.reset();
       closeModal(cardModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitBtn, false, "Saving...", "Save");
+    });
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
   setButtonText(submitBtn, true, "Saving...", "Save");
-  avatarSubmitButton.disabled = true;
   api
     .editUserAvatar(avatarLinkInput.value)
     .then((data) => {
       profileAvatar.src = data.avatar;
-      // evt.target.reset();
+      disableButton(avatarSubmitButton, settings);
       closeModal(avatarModal);
     })
     .catch(console.error)
