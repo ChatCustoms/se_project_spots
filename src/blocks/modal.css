@@ -94,7 +94,8 @@
   opacity: 40%;
   color: rgba(255, 255, 255, 1);
   border: 2px;
-
+  position: relative;
+  right: -39px;
 }
 
 .modal__close-icon:hover {
@@ -191,10 +192,17 @@
   font-weight: 500;
   line-height: 16px;
   border-radius: 8px;
-  color: #fff;
+  /* color: #212121; */
   opacity: 100%;
+  background-color: #fff;
+  border: 1px solid #212121;
+}
+
+.modal__cancel-button:hover {
   background-color: #212121;
-  border: none;
+  cursor: pointer;
+  transition: cursor 2s;
+  color: #fff;
 }
 
 .modal__button-dlt {
@@ -209,6 +217,12 @@
   opacity: 100%;
   background-color: #ff5656;
   border: none;
+}
+
+.modal__button-dlt:hover {
+  cursor: pointer;
+  transition: cursor 2s;
+  background-color: #ff3333;
 }
 
 .modal__submit-button_disabled {
@@ -312,7 +326,10 @@
   }
 
   .modal__content {
-    padding: 12px;
+    padding: 8px;
+    width: 290px;
+    display: grid;
+    justify-items: center;
   }
 
   .modal__content_type_preview {
@@ -345,10 +362,13 @@
     position: relative;
     top: -62px;
     right: -12px;
+    background-image: url("../images/White-close_icon.svg");
   }
 
   .modal__title {
     margin: 0 0 34px;
+    display: grid;
+    text-align: center;
   }
 
   #avatar-modal .modal__content_type_preview {

@@ -213,10 +213,6 @@ function handleAvatarSubmit(evt) {
     });
 }
 
-avatarLinkInput.addEventListener("input", () => {
-  disableButton(avatarSubmitButton, settings);
-});
-
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
