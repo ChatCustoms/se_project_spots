@@ -65,7 +65,7 @@
 .modal__close-button {
   position: absolute;
   top: 30px;
-  right: 50px;
+  right: 40px;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -95,13 +95,18 @@
   color: rgba(255, 255, 255, 1);
   border: 2px;
   position: relative;
-  right: -39px;
+  right: 0px;
 }
 
 .modal__close-icon:hover {
   cursor: pointer;
   transition: cursor 2s;
   opacity: 1;
+}
+
+.modal__close-icon_card {
+  right: -35px;
+  top: 0px;
 }
 
 .modal__title {
@@ -327,7 +332,7 @@
 
   .modal__content {
     padding: 8px;
-    width: 290px;
+    width: fit-content;
     display: grid;
     justify-items: center;
   }
@@ -360,18 +365,38 @@
   .modal__close-icon{
     margin-top: 10px;
     position: relative;
-    top: -62px;
-    right: -12px;
+    top: 0px;
+    right: 0px;
     background-image: url("../images/White-close_icon.svg");
   }
 
+  .modal__close-icon_profile {
+    top: 0px;
+  }
+
+  .modal__close-icon_avatar {
+    top: 0px;
+  }
+
+  .modal__close-icon_delete-form {
+    top: -60px;
+    background-image: url(../images/White-close_icon.svg);
+    color: #fff;
+  }
+
+  .modal__close-icon_card {
+    right: -8px;
+    top: -52px;
+  }
+
   .modal__title {
-    margin: 0 0 34px;
+    margin: 20px 0 34px;
     display: grid;
     text-align: center;
   }
 
   #avatar-modal .modal__content_type_preview {
     padding: 12px;
+    width: fit-content;
   }
 }
